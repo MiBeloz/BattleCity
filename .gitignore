@@ -1,0 +1,7 @@
+*
+!.gitignore
+!/headers/
+!/src/
+!*.hpp
+!*.cpp
+!*.txt
