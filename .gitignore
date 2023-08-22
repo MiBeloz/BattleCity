@@ -1,8 +1,1 @@
-*
-!.gitignore
-!/headers/
-!/src/
-!/external/glad/
-!*.hpp
-!*.cpp
-!*.txt
+/build/
