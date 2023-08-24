@@ -34,6 +34,7 @@ const char* fragment_shader =
 "	frag_color = vec4(color, 1.0);"
 "}";
 
+
 int main() {
     /* Initialize the library */
     if (!glfwInit()) {
