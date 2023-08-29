@@ -2,7 +2,7 @@
 
 
 int gWindowSizeX = 640;
-int gWindowSizeY = 480;
+int gWindowSizeY = 360;
 
 GLfloat point[] {
 	 0.0f,  0.5f,  0.0f,
@@ -36,11 +36,20 @@ const char* fragment_shader =
 
 
 int main() {
+    /* Initialization hints */
+    glfwInitHint(GLFW_JOYSTICK_HAT_BUTTONS, GLFW_FALSE);
+
     /* Initialize the library */
     if (!glfwInit()) {
         std::cout << "Can't load GLFW!" << std::endl;
         return -1;
     }
+
+    /* Error handling */
+    const char* description;
+    int code = glfwGetError(&description);
+    if (description)
+        std::cout << "Code: " + code + *description;
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -53,6 +62,10 @@ int main() {
         glfwTerminate();
         return -1;
     }
+
+    /* Window size limits */
+    glfwSetWindowSizeLimits(pWindow, 640, 360, 1280, 720);
+    glfwSetWindowAspectRatio(pWindow, 16, 9);
 
     /* Resize window */
     glfwSetWindowSizeCallback(pWindow, glfwWindowSizeCallback);
@@ -132,6 +145,7 @@ int main() {
     glfwTerminate();
     return 0;
 }
+
 
 void glfwWindowSizeCallback(GLFWwindow* pWindow, const int widgh, const int height) {
     gWindowSizeX = widgh;
