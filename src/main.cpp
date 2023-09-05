@@ -17,7 +17,7 @@ GLfloat color[] {
 };
 
 const char* vertex_shader =
-"#version 430\n"
+"#version 450\n"
 "layout(location = 0) in vec3 vertex_position;"
 "layout(location = 1) in vec3 vertex_color;"
 "out vec3 color;"
@@ -27,7 +27,7 @@ const char* vertex_shader =
 "}";
 
 const char* fragment_shader =
-"#version 430\n"
+"#version 450\n"
 "in vec3 color;"
 "out vec4 frag_color;"
 "void main() {"
@@ -49,10 +49,10 @@ int main() {
     const char* description;
     int code = glfwGetError(&description);
     if (description)
-        std::cout << "Code: " + code + *description;
+        std::cout << "Code: " + std::to_string(code) + ' ' + *description;
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
